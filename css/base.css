@@ -1,0 +1,306 @@
+/*主容器*/
+.panle{
+	position: relative;
+	height:calc(100% - 60px);
+}
+
+.panle>div{
+	position: absolute;
+	width:100%;
+	top:0px;
+}
+
+/*菜单*/
+.menus{
+	height:60px;
+}
+
+@keyframes menus{
+	0%{
+		opacity:0;
+		transform: translateY(-30px);
+	}
+}
+
+.menus>div>div{
+	animation:menus 0.5s;
+}
+
+.ui-box{
+	display: inline-block;
+	margin:10px 0px;
+	margin-left:30px;
+	width:40px;
+	height:40px;
+	border-radius: 6px;
+	--color:#ff7272;
+	background-color:var(--color);
+	box-shadow:inset 0px 0px 0px 3px rgba(0,0,0,0.2),
+				0px 8px 0px 0px rgba(0,0,0,0.3),
+				0px 8px 0px 0px var(--color);
+	cursor: pointer;
+}
+
+.ui-box:hover{
+	--color:#ff3333;
+}
+
+.ui-box>a{
+	display: inline-block;
+	width:100%;
+	height:100%;
+	line-height: 40px;
+	text-align: center;
+	color:#fff;
+	font-size:27px;
+}
+
+/*展开菜单*/
+.ui-open>p{
+	background-color:rgba(255,255,255,0.2);
+	margin:0px;
+	padding:8px 10px;
+	border-bottom:1px solid rgba(255,255,255,0.5);
+	position: relative;
+}
+
+.ui-open>p:before{
+	content: "-";
+	display: inline-block;
+	height:100%;
+	width:40px;
+	text-align: center;
+	line-height: 38px;
+	position: absolute;
+	right: 0px;
+	top:0px;
+}
+
+.ui-open.hide>div{
+	display: none;
+}
+
+.ui-open.hide>p:before{
+	content:"+";
+}
+
+/*表单项*/
+.ui-input{
+	border-bottom:1px solid rgba(255,255,255,0.5);
+	padding-bottom:5px;
+	text-align: center;
+}
+
+.ui-input>p{
+	margin:0px;
+	padding:5px 10px;
+	position: relative;
+	font-size:14px;
+	text-align: left;
+}
+
+.ui-input input,.ui-input select{
+	width:80%;
+}
+
+.ui-input a{
+	display: inline-block;
+	width:80%;
+	height:25px;
+	background-color:rgba(255,255,255,0.3);
+	border-radius: 4px;
+	line-height: 25px;
+}
+
+/*主菜单*/
+.ui-main{
+	text-align: center;
+}
+
+.ui-main>p{
+	font-size:80px;
+	margin:0px;
+	padding:20px 0px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	color: #fff;
+    text-shadow: 0px 8px 0px #cc5b5b;
+}
+
+.ui-main>div>a{
+	color:#fff;
+	display: inline-block;
+	width:80px;
+	height:80px;
+	margin:20px 30px;
+}
+
+.ui-main>div>a>i{
+	display: block;
+	height:40px;
+	line-height: 40px;
+	font-size:35px;
+	margin-top: 7px;
+}
+
+/*关卡选择*/
+.ui-levels{
+	text-align: center;
+	margin-top:50px;
+}
+
+.ui-levels>div{
+	display: inline-block;
+	width:900px;
+	text-align: left;
+}
+
+.ui-levels.phone>div{
+	width:420px;
+}
+
+.ui-levels>div>a{
+	display: inline-block;
+	color:#fff;
+	line-height: 40px;
+	text-align: center;
+	margin:10px;
+}
+
+
+/*登陆*/
+.login{
+	position: fixed;
+	z-index:500;
+	display: inline-block;
+	right:0px;
+	top:0px;
+}
+
+.login>div>a{
+	display: inline-block;
+	text-align: center;
+	line-height: 40px;
+	margin:10px;
+	margin-right:20px;
+}
+
+.login>div>a>i{
+	font-size: 28px;
+	color:#fff;
+	text-shadow: 0px 2px 0px rgba(0,0,0,0.1);
+}
+
+
+/*社区*/
+.ui-blog{
+	height:100%;
+}
+
+.ui-blog>div{
+	width:700px;
+	margin:30px auto;
+	height:calc(100% - 60px);
+	font-size:0;
+}
+
+.ui-blog.phone>div{
+	width:400px;
+}
+
+.ui-blog>div>div{
+	vertical-align: top;
+	box-sizing: border-box;
+	height:100%;
+	display: inline-block;
+	font-size:16px;
+}
+
+.ui-blog>div>.left{
+	width:120px;
+	border-right:1px solid rgba(255,255,255,0.5);
+}
+
+.ui-blog>div>.left>a{
+	display: block;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+	border-bottom:1px solid rgba(255,255,255,0.5);
+	cursor: pointer;
+	transition:background-color 0.2s;
+}
+
+.ui-blog.phone>div>.left>a{
+	height:60px;
+	line-height: 60px;
+	font-size:18px;
+}
+
+.ui-blog>div>.left>a:hover{
+	background-color:rgba(255,255,255,0.1);
+}
+
+.ui-blog>div>.right{
+	width:calc(100% - 120px);
+}
+
+.ui-blog-map{
+	display: inline-block;
+	width:calc(33.33% - 20px);
+	margin:10px;
+	position: relative;
+	height:60px;
+	background-color:rgba(255,255,255,0.1);
+	border-radius: 5px;
+}
+
+.ui-blog.phone .ui-blog-map{
+	width:calc(100% - 20px);
+	zoom:1.3;
+}
+
+.ui-blog-map>*{
+	position: absolute;
+}
+
+.ui-blog-map>img{
+	width:40px;
+	height:40px;
+	border-radius: 100%;
+	border:1px solid #fff;
+	top:9px;
+	left:9px;
+}
+
+.ui-blog-map>a{
+	left:60px;
+	top:8px;
+	height:25px;
+	overflow:hidden;
+	width:calc(100% - 70px);
+	font-size: 14px;
+}
+
+.ui-blog-map>p{
+	left:60px;
+	bottom:5px;
+	margin:0px;
+	height:25px;
+	overflow:hidden;
+	width:calc(100% - 70px);
+	font-size: 14px;
+}
+
+.ui-blog-map>p>a{
+	display: inline-block;
+	padding:2px 7px;
+	background-color:rgba(255,255,255,0.2);
+	border-radius: 3px;
+	cursor: pointer;
+	transition:background-color 0.2s;
+}
+
+.ui-blog-map>p>a:hover{
+	background-color: rgba(255,255,255,0.3);
+}

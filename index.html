@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>boxboy</title>
+	<meta name="renderer" content="webkit">
+	<meta name="viewport" content="width=400,initial-scale=0.8,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!-- 引入扩展 -->
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript" src="lib/vue.js"></script>
+	<script type="text/javascript" src="lib/touch.js"></script>
+	<script type="text/javascript" src="lib/lcg.build.js"></script>
+	<!-- 各部分逻辑 -->
+	<script type="text/javascript" src="js/data.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/item.js"></script>
+	<script type="text/javascript" src="js/base.js"></script>
+	<script type="text/javascript" src="js/story.js"></script>
+	<script type="text/javascript" src="js/editor.js"></script>
+	<script type="text/javascript" src="js/ui.js"></script>
+	<!-- 各部分样式 -->
+	<link rel="stylesheet" type="text/css" href="css/editor.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+</head>
+<body>
+	
+	<!-- 顶部菜单 -->
+	<div class="menus" dom-logic="menus">
+		<!-- 游戏进行时菜单 -->
+		<div lid="game" style="display: none;">
+			<div class="ui-box" onclick="_game.gameOver('ref');">
+				<a class="if icon-ref"></a>
+			</div>
+			<div class="ui-box" onclick="_game.gameOver('close');">
+				<a class="if icon-end"></a>
+			</div>
+		</div>
+		<!-- 编辑器界面菜单 -->
+		<div lid="edit" style="display: none;">
+			<div class="ui-box" onclick="window['editor-map'].close();">
+				<a class="if icon-end"></a>
+			</div>
+		</div>
+		<!-- 选关界面菜单 -->
+		<div lid="level" style="display: none;">
+			<div class="ui-box" onclick="levelMenu.close();">
+				<a class="if icon-end"></a>
+			</div>
+		</div>
+		<!-- 社区界面菜单 -->
+		<div lid="blog" style="display: none;">
+			<div class="ui-box" onclick="blog.close();">
+				<a class="if icon-end"></a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 下方容器 -->
+	<div class="panle">
+		<!-- 游戏核心Dom -->
+		<div dom-logic="game" class="game">
+			<div lid="panle">
+				
+			</div>
+			<p lid="about"></p>
+		</div>
+		<!-- 地图编辑器 -->
+		<div dom-logic="editor-map" class="editor-map" style="display:none;">
+			<!-- 左侧UI -->
+			<div lid="ui-left" class="em-left e-base">
+				<div class="left" lid="menu">
+					<i type="map" class="if icon-ui-tuceng" title="地图层"></i>
+					<i type="brush" class="if icon-ui-box" title="方块放置"></i>
+					<i type="info" class="if icon-ui-info" title="方块属性"></i>
+					<i type="debug" class="if icon-ui-run" title="调试/生成"></i>
+				</div>
+				<div class="right" lid="p-main"></div>
+			</div>
+			<!-- 地图容器 -->
+			<div lid="panle" class="em-panle">
+				
+			</div>
+		</div>
+		<!-- 游戏主菜单 -->
+		<div class="ui-main" dom-logic="ui-main" style="display:;">
+			<p>BOX BOY</p>
+			<div>
+				<a onclick="this.$root.goLevel();" class="ui-box"><i class="if icon-ui-run"></i>开始游戏</a>
+				<a lid="edit" onclick="this.$root.goEdit();" class="ui-box"><i class="if icon-edit"></i>编辑器</a>
+				<a onclick="this.$root.goBlog();" class="ui-box"><i class="if icon-maps"></i>地图社区</a>
+			</div>
+		</div>
+		<!-- 官方关卡界面 -->
+		<div class="ui-levels" dom-logic="ui-levels" style="display: none;">
+			<div lid="panle">
+				
+			</div>
+		</div>
+		<!-- 社区界面 -->
+		<div class="ui-blog" dom-logic="ui-blog" style="display: none;">
+			<div class="e-base">
+				<div class="left">
+					<a key="maps">社区地图</a>
+					<a lid="my" key="my">我的地图</a>
+				</div>
+				<div class="right" lid="right"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 登陆栏 -->
+	<div class="login" dom-logic="login">
+		<div lid="n">
+			<a class="ui-box" title="登陆账号" onclick="login.login();"><i class="if icon-qq"></i></a>
+		</div>
+		<div lid="s">
+			<a class="ui-box" title="退出登陆" onclick="login.logout();"><i class="if icon-jump"></i></a>
+		</div>
+	</div>
+
+</body>
+</html>

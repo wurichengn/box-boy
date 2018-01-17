@@ -1,0 +1,435 @@
+/*===body背景部分===*/
+@keyframes body-bg{
+	0%{
+		background-position: 0px 0px;
+	}
+	100%{
+		background-position: 200px 200px;
+	}
+}
+
+body{
+	margin:0px;
+	background-color:#95c0ff;
+	background-image:linear-gradient(-45deg,
+		rgba(255,255,255,0.3) 10%,
+		rgba(255,255,255,0) 10%,
+		rgba(255,255,255,0) 40%,
+		rgba(255,255,255,0.3) 40%,
+		rgba(255,255,255,0.3) 60%,
+		rgba(255,255,255,0) 60%,
+    	rgba(255,255,255,0) 90%,
+		rgba(255,255,255,0.3) 90%);
+	background-size:200px 200px;
+	overflow:hidden;
+	/*animation:body-bg 4s infinite linear;*/
+	-webkit-user-select:none;
+}
+
+body,html{
+	height:100%;
+}
+
+
+/*===游戏主容器===*/
+.game{
+	text-align: center;
+	height:100%;
+	overflow:hidden;
+	position: relative;
+}
+
+.game:before{
+	content:"";
+	display: inline-block;
+	vertical-align: middle;
+	height:100%;
+}
+
+.game>div{
+	vertical-align: middle;
+	display: inline-block;
+	position: relative;
+	transform-style: preserve-3d;
+	transition: opacity 0.5s;
+}
+
+.game>div.hide>div{
+	opacity:0;
+}
+
+.game>p{
+	position: absolute;
+	left:0px;
+	width:100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    animation:box-in 0.3s;
+    line-height: 50px;
+    text-shadow: 1px 1px rgba(0,0,0,0.4);
+}
+
+.game>p>a{
+	width:auto;
+	min-width: 35px;
+	padding:0px 3px;
+    height: 35px;
+    line-height: 35px;
+    --color: #e8e8e8;
+    color: #666;
+    margin: 0px 5px;
+    box-sizing: border-box;
+    display: inline-block;
+}
+
+/*===盒子样式===*/
+/*@keyframes box-in{
+	0%{
+		opacity:0;
+	}
+	100%{
+		opacity:1;
+	}
+}
+
+@keyframes box-out{
+	0%{
+		opacity:1;
+	}
+	100%{
+		opacity:0;
+	}
+}*/
+
+@keyframes box-in{
+	0%{
+		opacity:0;
+	}
+}
+
+.box-base{
+	width:40px;
+	height:40px;
+	position: absolute;
+	z-index:0;
+	transition:opacity 0.3s;
+	animation:box-in 0.3s;
+}
+
+.box{
+	width:40px;
+	height:40px;
+	position: absolute;
+	z-index:0;
+	--color:#87e3ff;
+	color:var(--color);
+	transition:opacity 0.3s;
+	animation:box-in 0.3s;
+	/*animation:box-in 0.4s;
+	animation-fill-mode: forwards;*/
+}
+
+.box>div{
+	width:100%;
+	height:100%;
+	background-color: currentColor;
+	position: absolute;
+	border-radius: 3px;
+	box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.2);
+	z-index:0;
+	left:0px;
+	top:0px;
+}
+
+.box:before{
+	content:"";
+	display: inline-block;
+	width:100%;
+	height: 100%;
+	background-color:currentColor;
+	position: absolute;
+	border-radius: 3px;
+	top:8px;
+	left:0px;
+	z-index:-2;
+}
+
+.box:after{
+	content:"";
+	display: inline-block;
+	width:100%;
+	height: 100%;
+	background-color:rgba(0,0,0,0.3);
+	position: absolute;
+	border-radius: 3px;
+	top:8px;
+	left:0px;
+	z-index:-1;
+}
+
+/*===墙体===*/
+.box-wall{
+	--color:#ccc;
+}
+
+.box-wall>div>a{
+	display: inline-block;
+	position: absolute;
+	width:20px;
+	height:20px;
+	background-color:rgba(0,0,0,0.2);
+	left:50%;
+	top:50%;
+	margin-left: -10px;
+	margin-top: -10px;
+	border-radius: 3px;
+}
+
+/*===结束===*/
+.box-end{
+	--color:#00d21d;
+}
+
+.box-end>div>a{
+	color:#fff;
+	display: inline-block;
+	line-height: 40px;
+}
+
+/*===石头地面===*/
+.box-stone{
+	--color:#e8e8e8;
+}
+
+/*===陷阱===*/
+.box-trap{
+	--color:#ccc;
+	letter-spacing:-4px;
+}
+
+.box-trap>div>a{
+	line-height: 10px;
+	display: inline-block;
+}
+
+.box-trap i{
+	font-size:14px;
+	line-height: 12px;
+	color:#fff;
+	text-shadow: 0px -1px 0px #555;
+
+}
+
+/*===强制转向===*/
+.box-spd{
+	--color:#ff4e5c;
+}
+
+.box-spd>div>div{
+	height:100%;
+}
+
+@keyframes spd-i-ani{
+	0%{
+		opacity:0;
+		transform:translateY(5px);
+	}
+	30%{
+		opacity:1;
+		transform:translateY(0px);
+	}
+	70%{
+		opacity:1;
+		transform:translateY(0px);
+	}
+	100%{
+		opacity:0;
+		transform:translateY(-5px);
+	}
+}
+
+.box-spd>div>div>i{
+	display: inline-block;
+	width:100%;
+	height:100%;
+	line-height: 40px;
+	color:#fff;
+	font-size:30px;
+	animation:spd-i-ani 1.5s infinite;
+}
+
+/*===底层内容===*/
+.bottom{
+	top:8px;
+}
+
+/*===地面===*/
+.box-floor>div:before{
+	content:"";
+	display: inline-block;
+	position: absolute;
+	width:10px;
+	height:calc(100% - 4px);
+	background-color:rgba(0,0,0,0.2);
+	left:50%;
+	top:2px;
+	margin-left: -5px;
+	background-color:rgba(255,255,255,0.4);
+	transform:skewX(-30deg);
+}
+
+/*===下一关===*/
+.box-jump{
+	--color:#ff7272;
+}
+
+.box-jump>div{
+	box-shadow: inset 0px 0px 0px 2px #cc5b5b,
+				inset 0px -32px 0px 0px rgba(0,0,0,0.3);
+}
+
+.box-jump i{
+	display: inline-block;
+    font-size: 25px;
+    color: #fff;
+    margin-top: 9px;
+}
+
+/*===箱子===*/
+.box-box{
+	--color:#d0935b;
+}
+
+.box-box>div{
+	box-shadow: inset 0px 0px 0px 1px #eaccb1,
+				inset 0px 0px 0px 5px #a77649,
+				inset 0px 0px 0px 6px #dcab7e;
+}
+
+/*===玩家===*/
+@keyframes player-i-ani{
+	0%{
+		text-shadow: 0px 2px rgba(0,0,0,0.4);
+		transform: translateY(0px);
+	}
+	50%{
+		text-shadow: 0px 3px rgba(0,0,0,0.4);
+		transform: translateY(-1px);
+	}
+	100%{
+		text-shadow: 0px 2px rgba(0,0,0,0.4);
+		transform: translateY(0px);
+	}
+}
+
+.box-player{
+	z-index:-1;
+	--color:#ff7272;
+	transition:--color 0.3s,opacity 0.3s;
+}
+
+.box-player i{
+	display: inline-block;
+	width:100%;
+	height:100%;
+	line-height: 40px;
+	font-size: 35px;
+	color:#fff784;
+	text-shadow: 0px 2px rgba(0,0,0,0.2);
+	animation:player-i-ani 1s infinite;
+}
+
+.player-die{
+	--color:#ccc;
+}
+
+/*变色器*/
+@keyframes box-change-ani{
+	0%{
+		opacity:0;
+		transform: scale3d(0.4,0.4,1);
+	}
+	30%{
+		opacity:1;
+		transform: scale3d(0.7,0.7,1);
+	}
+	70%{
+		opacity:1;
+		transform: scale3d(0.9,0.9,1);
+	}
+	100%{
+		opacity:0;
+		transform: scale3d(1,1,1);
+	}
+}
+
+.box-color-change{
+	border-radius: 100%;
+	background-color:rgba(255,255,255,0.4);
+}
+
+.box-color-change>div{
+	width:30px;
+	height:30px;
+	position: absolute;
+	border:5px dotted var(--color);
+	--color:#ff7272;
+	border-radius: 100%;
+	animation:box-change-ani 1.5s infinite;
+}
+
+
+/*颜色筛选门*/
+.box-color-door{
+	opacity: 0.5;
+}
+
+/*开关*/
+.box-switch-base>div{
+	color:var(--color);
+	--color:#ff6f6f;
+	border-radius: 3px;
+	width:20px;
+	height:15px;
+	background-color:currentColor;
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin-left:-10px;
+	margin-top:-12px;
+	z-index:0;
+	box-shadow: 0px 5px rgba(0,0,0,0.3),
+				0px 5px currentColor,
+				inset 0px 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+.box-switch-base.open>div{
+	--color:#45ff4d;
+	margin-top:-7px;
+	box-shadow: 0px 0px rgba(0,0,0,0.3),
+				0px 0px currentColor,
+				inset 0px 0px 0px 2px rgba(0,0,0,0.1);
+}
+
+.box-switch-base>div>a{
+	color:#fff;
+	font-size:10px;
+	display: inline-block;
+	position: absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+}
+
+.box-switch-many>div{
+	--color:#6188ff;
+}
+
+.box-switch-press>div{
+	--color:#888;
+}
+
+.box-switch-open>div{
+	--color:#c65dde;
+}
