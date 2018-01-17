@@ -40,8 +40,10 @@
 		window.mainMenu = this;
 
 		//移动端处理
-		if(_type == "Phone")
+		if(_type == "Phone"){
+			this.ids["github"].style["display"] = "none";
 			this.ids["edit"].style["display"] = "none";
+		}
 
 		//进入编辑器
 		this.goEdit = function(){
@@ -59,6 +61,11 @@
 		this.goBlog = function(){
 			this._proxy.style["display"] = "none";
 			blog.show();
+		}
+
+		//进入Github
+		this.goGitHub = function(){
+			window.open("https://github.com/wurichengn/box-boy");
 		}
 
 		//显示界面
